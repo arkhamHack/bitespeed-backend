@@ -10,12 +10,12 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "${DATABASE_PORT}:5432"
 
   app:
     build: .
     environment:
-      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_HOST: db
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_USER: ${DATABASE_USER}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
@@ -23,7 +23,7 @@ services:
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - "${APP_PORT}:8080"
 
 volumes:
   db-data:
