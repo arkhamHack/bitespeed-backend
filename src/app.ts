@@ -9,7 +9,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use("/api", routes);
+app.use(routes);
 const port = process.env.PORT || 8080;
 
 const startServer = async () => {
